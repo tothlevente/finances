@@ -27,7 +27,7 @@ Would you like to have an overview of your monthly income and expenses? With thi
 
 <a href="https://www.flaticon.com/free-icons/credit-card" title="credit card icons">Credit card icons created by Freepik - Flaticon</a>
 
-## Disclaimer:
+## Disclaimer
 
 The primary purpose of the project is learning and demonstration. This implies that the code might not be
 production-ready, thoroughly tested, or optimized for all scenarios.
