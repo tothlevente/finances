@@ -1,6 +1,6 @@
 # Finances 💳
 
-## Manage and analyze your monthly finances with ease
+## Easily manage and analyze your monthly finances
 
 Would you like to have an overview of your monthly income and expenses? With this application, you can easily track your finances and get detailed analyses of your spending.
 
