@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "../ui/card";
 
+import { sendPasswordResetEmail } from "@/services/authService";
 import { LoaderButton } from "../ui/loader-button";
 import { EmailInput } from "../ui/email-input";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +24,25 @@ export const ForgotPassword = () => {
 
   const navigate = useNavigate();
 
-  const handleForgotPassword = async (e: React.FormEvent<HTMLFormElement>) => {};
+  const handleForgotPassword = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const { error } = await sendPasswordResetEmail(email);
+
+    if (error) {
+      toast.error(error.message, { description: "Please try again." });
+      setLoading(false);
+      return;
+    }
+
+    setEmail("");
+    setLoading(false);
+
+    toast.success("Password reset email sent.", { description: "Please check your email." });
+
+    navigate(ROUTES.HOME);
+  };
 
   return (
     <div className="flex w-full items-center justify-center p-6 md:p-10">
