@@ -3,6 +3,7 @@ import { LoaderAnimateSpin } from "./components/ui/loader-animate-spin";
 import { ForgotPassword } from "./components/auth/ForgotPassword";
 import { CreateAccount } from "./components/auth/CreateAccount";
 import { Dashboard } from "./components/dashboard/Dashboard";
+import { useFinances } from "./context/FinanceContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { useSession } from "./context/SessionContext";
 import { supabase } from "./supabase/supabaseClient";
@@ -12,11 +13,13 @@ import { Toaster } from "@/components/ui/sonner";
 import { Login } from "./components/auth/Login";
 import { useEffect, useState } from "react";
 import { ROUTES } from "./types/Routes";
+import { toast } from "sonner";
 
 export const App = () => {
   const [passwordRecovery, setPasswordRecovery] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const { finances, setFinances } = useFinances();
   const { session, setSession } = useSession();
 
   useEffect(() => {
@@ -36,6 +39,25 @@ export const App = () => {
       }
     });
   }, [session]);
+
+  useEffect(() => {
+    const fetchFinances = async () => {
+      setLoading(true);
+
+      if (session) {
+        const { user } = session;
+      } else {
+        toast.error("You must be logged in to view your notes.", {
+          description: "Please log in to view your notes.",
+        });
+        setLoading(false);
+      }
+    };
+
+    if (session) {
+      fetchFinances();
+    }
+  }, []);
 
   return (
     <Router>
