@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "../ui/card";
 
+import { updatePassword } from "@/services/authService";
 import { PasswordInput } from "../ui/password-input";
 import { LoaderButton } from "../ui/loader-button";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +25,32 @@ export const PasswordRecovery = () => {
 
   const navigate = useNavigate();
 
-  const handlePasswordRecovery = async (e: React.FormEvent<HTMLFormElement>) => {};
+  const handlePasswordRecovery = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    if (password !== passwordAgain) {
+      toast.error("Passwords do not match.", { description: "Please try again." });
+      return;
+    }
+
+    const { error } = await updatePassword(password);
+
+    if (error) {
+      toast.error(error.message, { description: "Please try again." });
+      return;
+    }
+
+    setPassword("");
+    setPasswordAgain("");
+    setLoading(false);
+
+    toast.success("Password updated successfully.", {
+      description: "You can now log in with your new password.",
+    });
+
+    navigate(ROUTES.HOME);
+  };
 
   return (
     <div className="flex w-full items-center justify-center p-6 md:p-10">
