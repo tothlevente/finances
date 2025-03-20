@@ -7,6 +7,8 @@ import {
   CardTitle,
 } from "../ui/card";
 
+import { validatePassword } from "@/utils/passwordValidation";
+import { createAccount } from "@/services/authService";
 import { PasswordInput } from "../ui/password-input";
 import { LoaderButton } from "../ui/loader-button";
 import { EmailInput } from "../ui/email-input";
@@ -23,7 +25,28 @@ export const CreateAccount = () => {
   const [passwordAgain, setPasswordAgain] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const handleCreateAccount = async (e: React.FormEvent<HTMLFormElement>) => {};
+  const handleCreateAccount = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    if (!validatePassword(password, passwordAgain)) {
+      setLoading(false);
+      return;
+    }
+
+    const { error } = await createAccount(email, password);
+
+    if (error) {
+      toast.error(error.message, { description: "Please try again." });
+      setLoading(false);
+      return;
+    }
+
+    toast.success("Account created successfully.", {
+      description: "You can now login to your account.",
+    });
+    setLoading(false);
+  };
 
   return (
     <div className="flex w-full items-center justify-center p-6 md:p-10">
