@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "../ui/card";
 
+import { signInWithEmailAndPassword } from "@/services/authService";
 import { PasswordInput } from "../ui/password-input";
 import { LoaderButton } from "../ui/loader-button";
 import { EmailInput } from "../ui/email-input";
@@ -15,13 +16,27 @@ import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils.ts";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const handleLogin = async () => {};
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const { error } = await signInWithEmailAndPassword(email, password);
+
+    if (error) {
+      toast.error(error.message, { description: "Please try again." });
+      setLoading(false);
+      return;
+    }
+
+    setLoading(false);
+  };
 
   return (
     <div className="flex w-full items-center justify-center p-6 md:p-10">
