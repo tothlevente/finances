@@ -28,7 +28,7 @@ export const Language = ({ setActiveMenu }: LanguageProps) => {
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
-                <BreadcrumbPage>Language</BreadcrumbPage>
+                <BreadcrumbPage>Language and localization</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
