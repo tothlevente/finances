@@ -4,4 +4,5 @@ export type Menu =
   | "security"
   | "appearance"
   | "language"
+  | "download"
   | "advanced";
