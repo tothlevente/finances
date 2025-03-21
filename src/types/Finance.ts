@@ -1,11 +1,9 @@
-import { Category } from "./Category";
-
 export interface Finance {
   id: string;
   name: string;
   date: string;
   amount: number;
-  category: Category[];
+  categories_id: string | string[];
   is_paid: boolean;
   is_recurring: boolean;
   is_expected: boolean;
