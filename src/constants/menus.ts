@@ -1,4 +1,5 @@
 import {
+  DownloadIcon,
   GlobeIcon,
   ImageIcon,
   PaintbrushIcon,
@@ -24,5 +25,6 @@ export const MENU_DATA = [
   { key: "security", label: "Security", icon: ShieldIcon },
   { key: "appearance", label: "Appearance", icon: PaintbrushIcon },
   { key: "language", label: "Language", icon: GlobeIcon },
+  { key: "download", label: "Download", icon: DownloadIcon },
   { key: "advanced", label: "Advanced", icon: SettingsIcon },
 ];
