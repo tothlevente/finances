@@ -1,3 +1,4 @@
+import { CategoryProvider } from "./context/CategoryContext";
 import { FinancesProvider } from "./context/FinanceContext";
 import { SessionProvider } from "./context/SessionContext";
 import { createRoot } from "react-dom/client";
@@ -10,9 +11,11 @@ import "./i18n";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <SessionProvider>
-      <FinancesProvider>
-        <App />
-      </FinancesProvider>
+      <CategoryProvider>
+        <FinancesProvider>
+          <App />
+        </FinancesProvider>
+      </CategoryProvider>
     </SessionProvider>
   </StrictMode>
 );
