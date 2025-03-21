@@ -41,7 +41,7 @@ export const Download = ({ setActiveMenu }: DownloadProps) => {
         </div>
       </header>
       <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-4 pt-0">
-        <p className="text-sm text-muted-foreground">
+        <div className="text-sm text-muted-foreground">
           {finances.length === 0 && (
             <Alert>
               <AlertCircleIcon className="h-4 w-4" />
@@ -51,7 +51,7 @@ export const Download = ({ setActiveMenu }: DownloadProps) => {
               </AlertDescription>
             </Alert>
           )}
-        </p>
+        </div>
         <DownloadAsJson />
         <hr />
         <DownloadAsEncryptedJson />
