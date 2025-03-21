@@ -18,6 +18,7 @@ import {
 import { getAvatar } from "@/services/profileService";
 import { useSession } from "@/context/SessionContext";
 import { useAvatar } from "@/context/AvatarContext";
+import { Settings } from "../settings/Settings";
 import { logout } from "@/services/authService";
 import { useNavigate } from "react-router-dom";
 import { HeaderAvatar } from "./HeaderAvatar";
@@ -124,6 +125,13 @@ export const HeaderDropdownMenu = () => {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+
+      {openSettingsMenu && (
+        <Settings
+          open={openSettingsMenu}
+          onOpenChange={handleCloseSettingsMenu}
+        />
+      )}
     </>
   );
 };
