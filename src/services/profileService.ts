@@ -56,7 +56,7 @@ export const getUserLanguage = async (id: string) => {
   const localLanguage = localStorage.getItem(languageStorageKey);
 
   if (localLanguage) {
-    return { data: [{ language: localLanguage }], error: null };
+    return { data: [{ language_code: localLanguage }], error: null };
   }
 
   const { data, error } = await supabase
