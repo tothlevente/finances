@@ -1,4 +1,5 @@
 import { Finance } from "@/types/Finance";
+
 import CryptoJS from "crypto-js";
 
 /**
@@ -22,6 +23,17 @@ export const decryptText = (text: string, secretKey: string): string => {
   return bytes.toString(CryptoJS.enc.Utf8);
 };
 
+/**
+ * Decrypts an array of financial records for a specific user.
+ *
+ * @param finances - An array of financial records to decrypt. Each record should include
+ *                   properties such as `name`, `amount`, `description`, and `id`.
+ * @param userId - The unique identifier of the user, used as a key for decryption.
+ * @returns An array of decrypted financial records. If decryption fails for a record,
+ *          it will return `null` for that record.
+ *
+ * @throws Will log an error to the console if decryption of a record fails.
+ */
 export const decryptFinances = (finances: Finance[], userId: string) => {
   return finances.map((finance) => {
     try {
