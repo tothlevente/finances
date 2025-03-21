@@ -7,7 +7,8 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-import { KeyRoundIcon, MailIcon } from "lucide-react";
+import { KeyRoundIcon, LockKeyholeIcon, MailIcon } from "lucide-react";
+import { ShowEncryptionKey } from "./ShowEncryptionKey";
 import { useSession } from "@/context/SessionContext";
 import { ChangePassword } from "./ChangePassword";
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ interface SecurityProps {
 export const Security = ({ setActiveMenu }: SecurityProps) => {
   const [showChangeEmail, setShowChangeEmail] = useState(false);
   const [showChangePassword, setShowChangePassword] = useState(false);
+  const [showEncryptionKey, setShowEncryptionKey] = useState(false);
 
   const { session } = useSession();
 
@@ -89,6 +91,28 @@ export const Security = ({ setActiveMenu }: SecurityProps) => {
             </Button>
           </div>
         </div>
+        <hr />
+        <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-col gap-2 w-fit">
+            <p className="scroll-m-20 text-l font-semibold tracking-tight">
+              Show your encryption key
+            </p>
+            <p className="text-sm text-muted-foreground">
+              If you want to downlod your data, you will need your encryption key. If you
+              lose this key, you will not be able to access your data. Please store this key
+              in a safe place. Do not share this key with anyone.
+            </p>
+          </div>
+          <div className="flex items-center gap-2 m-3">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => setShowEncryptionKey(true)}
+            >
+              <LockKeyholeIcon />
+            </Button>
+          </div>
+        </div>
       </div>
 
       {showChangeEmail && (
@@ -102,6 +126,13 @@ export const Security = ({ setActiveMenu }: SecurityProps) => {
         <ChangePassword
           open={showChangePassword}
           onOpenChange={() => setShowChangePassword(!showChangePassword)}
+        />
+      )}
+
+      {showEncryptionKey && (
+        <ShowEncryptionKey
+          open={showEncryptionKey}
+          onOpenChange={() => setShowEncryptionKey(!showEncryptionKey)}
         />
       )}
 
