@@ -62,8 +62,8 @@ export const App = () => {
           setLoading(false);
         }
       } else {
-        toast.error("You must be logged in to view your notes.", {
-          description: "Please log in to view your notes.",
+        toast.error("You must be logged in to view your finances.", {
+          description: "Please log in to view your finances.",
         });
         setLoading(false);
       }

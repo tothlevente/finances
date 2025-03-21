@@ -51,8 +51,8 @@ export const Advanced = ({ setActiveMenu }: AdvancedProps) => {
             </p>
             <p className="text-sm text-muted-foreground">
               Deleting all finances will result in the loss of all finance data. This action
-              cannot be undone. Strongly recommend downloading a backup of your notes prior
-              to proceeding.
+              cannot be undone. Strongly recommend downloading a backup of your finances
+              prior to proceeding.
             </p>
           </div>
           <div className="flex items-center gap-2 m-3">
@@ -75,8 +75,8 @@ export const Advanced = ({ setActiveMenu }: AdvancedProps) => {
             <p className="text-sm text-muted-foreground">
               Deleting your account will result in the loss of all account data and prevent
               login with the same email address for 14 days. To re-register during this time,
-              please contact support. Strongly recommend downloading a backup of your notes
-              prior to proceeding.
+              please contact support. Strongly recommend downloading a backup of your
+              finances prior to proceeding.
             </p>
           </div>
           <div className="flex items-center gap-2 m-3">
