@@ -3,6 +3,7 @@ import { LoaderAnimateSpin } from "./components/ui/loader-animate-spin";
 import { ForgotPassword } from "./components/auth/ForgotPassword";
 import { CreateAccount } from "./components/auth/CreateAccount";
 import { Dashboard } from "./components/dashboard/Dashboard";
+import { getUserFinance } from "./services/financeService";
 import { useFinances } from "./context/FinanceContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { useSession } from "./context/SessionContext";
@@ -12,6 +13,7 @@ import { Footer } from "./components/footer/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { Login } from "./components/auth/Login";
 import { useEffect, useState } from "react";
+import { Finance } from "./types/Finance";
 import { ROUTES } from "./types/Routes";
 import { toast } from "sonner";
 
@@ -46,6 +48,15 @@ export const App = () => {
 
       if (session) {
         const { user } = session;
+        const { data, error } = await getUserFinance(user.id);
+
+        if (error) {
+          toast.error(error.message, { description: "Please try again." });
+          setLoading(false);
+        } else {
+          setFinances(data as Finance[]);
+          setLoading(false);
+        }
       } else {
         toast.error("You must be logged in to view your notes.", {
           description: "Please log in to view your notes.",
@@ -57,7 +68,7 @@ export const App = () => {
     if (session) {
       fetchFinances();
     }
-  }, []);
+  }, [session, setFinances]);
 
   return (
     <Router>
