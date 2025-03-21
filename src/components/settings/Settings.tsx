@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/sidebar";
 
 import { Appearance } from "./appearance/Appearance";
+import { Categories } from "./categories/Categories";
 import { Download } from "./download/Download";
 import { Security } from "./security/Security";
 import { Language } from "./language/Language";
@@ -80,10 +81,11 @@ export const Settings = ({ open, onOpenChange }: SettingsProps) => {
           <main className="flex-1 p-4">
             {activeMenu === "account" && <Account setActiveMenu={setActiveMenu} />}
             {activeMenu === "avatar" && <Avatar setActiveMenu={setActiveMenu} />}
-            {activeMenu === "security" && <Security setActiveMenu={setActiveMenu} />}
             {activeMenu === "appearance" && <Appearance setActiveMenu={setActiveMenu} />}
+            {activeMenu === "categories" && <Categories setActiveMenu={setActiveMenu} />}
             {activeMenu === "language" && <Language setActiveMenu={setActiveMenu} />}
             {activeMenu === "download" && <Download setActiveMenu={setActiveMenu} />}
+            {activeMenu === "security" && <Security setActiveMenu={setActiveMenu} />}
             {activeMenu === "advanced" && <Advanced setActiveMenu={setActiveMenu} />}
           </main>
         </SidebarProvider>
