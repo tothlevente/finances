@@ -2,7 +2,7 @@ export interface Finance {
   id: string;
   name: string;
   date: string;
-  amount: number;
+  amount: number | string;
   categories_id: string[];
   is_paid: boolean;
   is_recurring: boolean;
