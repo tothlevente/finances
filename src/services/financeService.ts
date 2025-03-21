@@ -1,5 +1,6 @@
 import { supabase } from "@/supabase/supabaseClient";
 import { decryptText } from "./cryptoService";
+import { Finance } from "@/types/Finance";
 
 /**
  * Retrieves the financial records of a user from the "finance" table.
@@ -37,6 +38,61 @@ export const getUserFinance = async (id: string) => {
       record.description = decryptText(record.description, id);
     });
   }
+
+  return { data, error };
+};
+
+export const createUserFinance = async (id: string, finance: Finance) => {
+  const { data, error } = await supabase.from("finances").insert([
+    {
+      user_id: id,
+      name: finance.name,
+      date: finance.date,
+      amount: finance.amount,
+      categories_id: finance.categories_id,
+      is_paid: finance.is_paid,
+      is_recurring: finance.is_recurring,
+      is_expected: finance.is_expected,
+      color: finance.color,
+      description: finance.description,
+    },
+  ]);
+
+  return { data, error };
+};
+
+export const updateUserFinance = async (id: string, finance: Finance) => {
+  const { data, error } = await supabase
+    .from("finances")
+    .update({
+      name: finance.name,
+      date: finance.date,
+      amount: finance.amount,
+      categories_id: finance.categories_id,
+      is_paid: finance.is_paid,
+      is_recurring: finance.is_recurring,
+      is_expected: finance.is_expected,
+      color: finance.color,
+      description: finance.description,
+    })
+    .eq("id", finance.id)
+    .eq("user_id", id);
+
+  return { data, error };
+};
+
+export const deleteUserFinance = async (id: string, financeId: string) => {
+  const { data, error } = await supabase
+    .from("finances")
+    .delete()
+    .eq("id", financeId)
+    .eq("user_id", id);
+
+  return { data, error };
+};
+
+export const deleteUserAllFinances = async (id: string) => {
+  const { data, error } = await supabase.from("finances").delete().eq("user_id", id);
 
   return { data, error };
 };
