@@ -15,11 +15,28 @@ import { Category } from "@/types/Category";
  *   - `created_at`: The timestamp when the category was created.
  * - `error`: Any error that occurred during the fetch operation.
  */
-export const getUserCategories = async (id: string) => {
+export const getUserCategories = async (user_id: string) => {
   const { data, error } = await supabase
     .from("categories")
     .select("id, name, icon, color, description, created_at")
-    .eq("user_id", id);
+    .eq("user_id", user_id);
+
+  return { data, error };
+};
+
+/**
+ * Retrieves a user-specific category from the "categories" table.
+ *
+ * @param id - The unique identifier of the category to retrieve.
+ * @param user_id - The unique identifier of the user to whom the category belongs.
+ * @returns An object containing the retrieved category data or an error, if any.
+ */
+export const getUserCategory = async (id: string, user_id: string) => {
+  const { data, error } = await supabase
+    .from("categories")
+    .select("id, name, icon, color, description, created_at")
+    .eq("id", id)
+    .eq("user_id", user_id);
 
   return { data, error };
 };
