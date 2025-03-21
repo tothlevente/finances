@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/sidebar";
 
 import { Appearance } from "./appearance/Appearance";
+import { Download } from "./download/Download";
 import { Security } from "./security/Security";
 import { Language } from "./language/Language";
 import { Advanced } from "./advanced/Advanced";
@@ -82,6 +83,7 @@ export const Settings = ({ open, onOpenChange }: SettingsProps) => {
             {activeMenu === "security" && <Security setActiveMenu={setActiveMenu} />}
             {activeMenu === "appearance" && <Appearance setActiveMenu={setActiveMenu} />}
             {activeMenu === "language" && <Language setActiveMenu={setActiveMenu} />}
+            {activeMenu === "download" && <Download setActiveMenu={setActiveMenu} />}
             {activeMenu === "advanced" && <Advanced setActiveMenu={setActiveMenu} />}
           </main>
         </SidebarProvider>
