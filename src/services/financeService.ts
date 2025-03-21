@@ -24,9 +24,9 @@ import { decryptText } from "./cryptoService";
  */
 export const getUserFinance = async (id: string) => {
   const { data, error } = await supabase
-    .from("finance")
+    .from("finances")
     .select(
-      "id, name, description, date, amount, is_paid, is_recurring, is_expected, categories_id, updated_at, created_at"
+      "id, name, date, amount, categories_id, is_paid, is_recurring, is_expected, color, description, created_at, updated_at"
     )
     .eq("user_id", id);
 
