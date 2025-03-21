@@ -7,7 +7,8 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-import { Trash2Icon, UserRoundXIcon } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircleIcon, Trash2Icon, UserRoundXIcon } from "lucide-react";
 import { useFinances } from "@/context/FinanceContext";
 import { DeleteFinances } from "./DeleteFinances";
 import { Button } from "@/components/ui/button";
@@ -44,6 +45,17 @@ export const Advanced = ({ setActiveMenu }: AdvancedProps) => {
         </div>
       </header>
       <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-4 pt-0">
+        <p className="text-sm text-muted-foreground">
+          {finances.length === 0 && (
+            <Alert>
+              <AlertCircleIcon className="h-4 w-4" />
+              <AlertTitle>No finances available</AlertTitle>
+              <AlertDescription>
+                You need to add at least one finance to delete your data.
+              </AlertDescription>
+            </Alert>
+          )}
+        </p>
         <div className="flex flex-row justify-between items-center">
           <div className="flex flex-col gap-2 w-fit">
             <p className="scroll-m-20 text-l font-semibold tracking-tight">
