@@ -1,8 +1,9 @@
 export type Menu =
   | "account"
   | "avatar"
-  | "security"
   | "appearance"
+  | "categories"
   | "language"
   | "download"
+  | "security"
   | "advanced";
