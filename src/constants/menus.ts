@@ -1,11 +1,12 @@
 import {
-  DownloadIcon,
+  UserIcon,
   GlobeIcon,
   ImageIcon,
-  PaintbrushIcon,
-  SettingsIcon,
   ShieldIcon,
-  UserIcon,
+  SettingsIcon,
+  DownloadIcon,
+  PaintbrushIcon,
+  SwatchBookIcon,
 } from "lucide-react";
 
 /**
@@ -22,9 +23,10 @@ import {
 export const MENU_DATA = [
   { key: "account", label: "Account", icon: UserIcon },
   { key: "avatar", label: "Avatar", icon: ImageIcon },
-  { key: "security", label: "Security", icon: ShieldIcon },
   { key: "appearance", label: "Appearance", icon: PaintbrushIcon },
-  { key: "language", label: "Language", icon: GlobeIcon },
+  { key: "categories", label: "Categories", icon: SwatchBookIcon },
+  { key: "language", label: "Language and localization", icon: GlobeIcon },
   { key: "download", label: "Download", icon: DownloadIcon },
+  { key: "security", label: "Security", icon: ShieldIcon },
   { key: "advanced", label: "Advanced", icon: SettingsIcon },
 ];
