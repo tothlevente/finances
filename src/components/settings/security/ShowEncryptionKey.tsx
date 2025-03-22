@@ -32,12 +32,12 @@ export const ShowEncryptionKey = ({ open, onOpenChange }: ShowEncryptionKeyProps
     >
       <DialogContent>
         <DialogHeader className="space-y-4">
-          <DialogTitle>Show encryption key</DialogTitle>
+          <DialogTitle>Encryption key</DialogTitle>
           <DialogDescription>
             If you want to downlod your data, you will need your encryption key. If you lose
             this key, you will not be able to access your data. Please store this key in a
-            safe place. Do not share this key with anyone. With this key and with your
-            courrent password, you can decrypt your data. This is your encryption key:
+            safe place. Do not share this key with anyone. With this key and your courrent
+            password, you can decrypt your data. This is your encryption key:
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-6">
